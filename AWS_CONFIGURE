@@ -1,0 +1,22 @@
+
+
+how to display the instances of the ec2
+
+step by step after creating all the instaces we want
+in the terminal this is what we do
+
+1- we enter ( aws configure )
+2- we take the 
+2.1- AWS Access Key ID
+2.2- Secret Access Key
+2.3- Default region name
+2.4- Default output format (here is did not enter anything because i want it default to be JSON format)
+2.5- after all that we enter the line ( gedit  ~/.aws/credentials )
+2.6- in the file that we opened we enter the (aws_session_token)
+
+3.1- after all that to display all the instances in a **JSON** format we use this line
+aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,State.Name,PublicIpAddress,PrivateIpAddress,InstanceType,LaunchTime]' --output json
+
+3.1- to display all the instances in a **TABLE** format we use this line
+aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,State.Name,PublicIpAddress,PrivateIpAddress,InstanceType,LaunchTime]' --output table
+
